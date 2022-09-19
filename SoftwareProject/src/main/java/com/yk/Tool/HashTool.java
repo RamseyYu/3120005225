@@ -1,9 +1,13 @@
 package com.yk.Tool;
 
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.List;
+import java.util.Map;
+
 import com.hankcs.hanlp.HanLP;
+import com.yk.Exception.ShortException;
 
 public class HashTool {
     /*
@@ -34,6 +38,13 @@ public class HashTool {
     */
 
     public static String getSimHash(String string){
+
+        try{
+            if(string.length() < 200) throw new ShortException("该文本过短！请更换更长的文本进行比对");
+        }catch (ShortException e){
+            e.printStackTrace();
+            return null;
+        }
 
         // 用数组表示特征向量,取128位,从 0 1 2 位开始表示从高位到低位
         int[] v = new int[128];
@@ -76,4 +87,6 @@ public class HashTool {
         }
         return simHash;
     }
+
+
 }
