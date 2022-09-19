@@ -10,6 +10,6 @@ public class main {
         String s = TextIO.readText("D:\\系统自定义修改\\new桌面\\软件工程个人项目\\SoftwareProject\\TestData\\orig.txt");
         System.out.println(s);
 
-        System.out.println(HashTool.getHash("ABCD"));
+        System.out.println(HashTool.getSimHash(s));
     }
 }
