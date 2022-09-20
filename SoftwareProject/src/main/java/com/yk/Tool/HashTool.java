@@ -39,12 +39,12 @@ public class HashTool {
 
     public static String getSimHash(String string){
 
-//        try{
-//            if(string.length() < 200) throw new ShortException("该文本过短！请更换更长的文本进行比对");
-//        }catch (ShortException e){
-//            e.printStackTrace();
-//            return null;
-//        }
+        try{
+            if(string.length() < 200) throw new ShortException("该文本过短！请更换更长的文本进行比对");
+        }catch (ShortException e){
+            e.printStackTrace();
+            return null;
+        }
 
         // 用数组表示特征向量,取128位,从 0 1 2 位开始表示从高位到低位
         int[] v = new int[128];
@@ -63,6 +63,15 @@ public class HashTool {
                     keywordHash += "0";
                 }
             }
+
+            //判断文本自身重复度是否合理
+            try{
+                if(size < 5) throw new ShortException("该文本冗余过多或者文本过短！请修改文本再进行比对");
+            }catch (ShortException e){
+                e.printStackTrace();
+                return null;
+            }
+
             // 3、加权、合并
             for (int j = 0; j < v.length; j++) {
                 // 对keywordHash的每一位与'1'进行比较

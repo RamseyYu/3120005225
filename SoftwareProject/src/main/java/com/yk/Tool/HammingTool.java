@@ -2,6 +2,14 @@ package com.yk.Tool;
 
 public class HammingTool {
 
+    /*
+
+     * @param simHash值
+     * @description: 根据simHash值，计算海明距离
+     * @author:      yk
+     * @return:      海明距离distance
+    */
+
     public static int getHammingDistance(String simHash1, String simHash2) {
         int distance = 0;
         if (simHash1.length() != simHash2.length()) {
@@ -18,6 +26,13 @@ public class HammingTool {
         return distance;
     }
 
+    /*
+
+     * @param simHash值
+     * @description: 先通过传入的simHash值计算出海明距离，再由海明距离计算出相似度
+     * @author:      yk
+     * @return:      相似度similarity
+    */
 
     public static double getSimilarity(String simHash1, String simHash2) {
         // 通过 simHash1 和 simHash2 获得它们的海明距离
